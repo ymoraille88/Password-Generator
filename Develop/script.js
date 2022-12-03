@@ -4,9 +4,8 @@ console.log(generateBtn)
 
 var passwordMinimumLength = 8;
 var passwordMaximumLength = 128;
-var password = []
-var specialCharects = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']
-console.log(specialCharects)
+var password = '';
+var specialCharecters = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']
 var numbersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 var uppersList = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
@@ -18,32 +17,65 @@ function generatePassword() {
   
   // var length = parseInt(
   //   prompt('How many characters would you like your password to contain?'),
+  var length = parseInt(prompt('How many characters would you like your password to contain?'));
+  var possibleCharacters = '';
 
-  var length = parseInt(prompt('How many characters would you like your password to contain?')) || 0;
+   if(length >= passwordMinimumLength && length <= passwordMaximumLength)
+{
+
+    var hasUppersList = confirm('Do you want upperCase letters?');
+
+    if(hasUppersList){
+      possibleCharacters += uppersList.join('');
+    }
+    var hasLowersList= confirm('Do you want lowerCase letters?');
   
-  var randomEl = Math.floor(Math.random() * numbersList.length)
-  // alert(randomEl)
-  password.push(randomEl);
 
-  alert(length)
-  var randomEl = Math.floor(Math.random() * uppersList.length)
-  password.push(randomEl);
+    if(hasLowersList){
+      possibleCharacters += lowersList.join('');
+    }
+    var hasSpecialCharecters = confirm('Do you want specialCharecters?');
 
-  alert(length)
-  var randomEl = Math.floor(Math.random() * lowersList.length)
-  password.push(randomEl);
+    if(hasSpecialCharecters){
+      possibleCharacters += specialCharecters.join('');
+    }
+    var numbersList  = confirm('Do you want upperCase letters?');
 
-   alert(length)
-  var randomEl = Math.floor(Math.random() * specialCharects.length)
-  password.push(randomEl);
+    if(hasNumbersList){
+      possibleCharacters += numbersList.join('');
 
-  if (passwordMinimumLength < 8) {
-    prompt ('Not Enough Character');
     
-  }if (passwordMaximumLength > 128) 
-    prompt ('To many Charecters');
+
+    // return password;
+    }
+  
+
+  if(hasLowersList) {
+    alert('addLower');
     
-  }if (passwordMaximumLength === 5)
+  }
+
+  if(hasUppersList) {
+    alert('addUpper');
+  }
+
+  if(hasSpecialCharactersList) {
+    alert('addSpecial');
+  }
+
+  if(hasNumbersList) {
+    alert('add Number');
+  }
+
+  return password;
+}
+}
+
+
+  
+
+
+  
 
   
 
