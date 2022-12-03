@@ -1,83 +1,94 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-console.log(generateBtn)
 
-var passwordMinimumLength = 8;
-var passwordMaximumLength = 128;
-var password = '';
-var specialCharecters = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']
-var numbersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-var uppersList = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
-
-var lowersList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 function generatePassword() {
-  
-  
+
+  var passwordMinimumLength = 8;
+  var passwordMaximumLength = 128;
+  var password = '';
+  var specialCharecters = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']
+  var numbersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+  var uppersList = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
+
+  var lowersList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
   // var length = parseInt(
   //   prompt('How many characters would you like your password to contain?'),
   var length = parseInt(prompt('How many characters would you like your password to contain?'));
   var possibleCharacters = '';
 
-   if(length >= passwordMinimumLength && length <= passwordMaximumLength)
-{
+  if (length >= passwordMinimumLength && length <= passwordMaximumLength) {
 
     var hasUppersList = confirm('Do you want upperCase letters?');
 
-    if(hasUppersList){
+    if (hasUppersList) {
       possibleCharacters += uppersList.join('');
     }
-    var hasLowersList= confirm('Do you want lowerCase letters?');
-  
+    var hasLowersList = confirm('Do you want lowerCase letters?');
 
-    if(hasLowersList){
+
+    if (hasLowersList) {
       possibleCharacters += lowersList.join('');
     }
     var hasSpecialCharecters = confirm('Do you want specialCharecters?');
 
-    if(hasSpecialCharecters){
+    if (hasSpecialCharecters) {
       possibleCharacters += specialCharecters.join('');
     }
-    var numbersList  = confirm('Do you want upperCase letters?');
+    var hasNumbersList = confirm('Do you want numbers?');
 
-    if(hasNumbersList){
+    if (hasNumbersList) {
       possibleCharacters += numbersList.join('');
 
-    
-
-    // return password;
     }
-  
 
-  if(hasLowersList) {
-    alert('addLower');
-    
+    if (hasUppersList || hasLowersList || hasSpecialCharecters || hasNumbersList) {
+      for (var i = 0; i < length; i++) {
+        var random = Math.floor(Math.random() * possibleCharacters.length);
+        password += possibleCharacters[random];
+      }
+      return password;
+    } else {
+      alert("Please choose at least one character type.");
+      return "";
+    }
+  } else {
+    alert("Please choose between 8 and 128.");
+    return "";
   }
 
-  if(hasUppersList) {
-    alert('addUpper');
-  }
 
-  if(hasSpecialCharactersList) {
-    alert('addSpecial');
-  }
+  //   if(hasLowersList) {
+  //     alert('addLower');
 
-  if(hasNumbersList) {
-    alert('add Number');
-  }
+  //   }
 
-  return password;
+  //   if(hasUppersList) {
+  //     alert('addUpper');
+  //   }
+
+  //   if(hasSpecialCharactersList) {
+  //     alert('addSpecial');
+  //   }
+
+  //   if(hasNumbersList) {
+  //     alert('add Number');
+  //   }
+
+  //   return password;
+  // }
 }
-}
 
 
-  
 
 
-  
 
-  
+
+
+
 
 
 
